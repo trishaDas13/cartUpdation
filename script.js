@@ -77,15 +77,15 @@ for(let i = 0; i < list.length; i++){
     //todo --------- For Decreament ---------
     minus[i].addEventListener('click',() =>{
         if(num[i].innerText == 0){
-            if(i == 0){
+            if(i == 0 && content.querySelector('.first')){
                 let removeEle = content.querySelector('.first');
                 content.removeChild(removeEle);
             }
-            else if(i == 1){
+            else if(i == 1 && content.querySelector('.second')){
                 let removeEle = content.querySelector('.second');
                 content.removeChild(removeEle);
             }
-            else{
+            else if(i == 2 && content.querySelector('.third')){
                 let removeEle = content.querySelector('.third');
                 content.removeChild(removeEle);
             }
@@ -107,7 +107,12 @@ for(let i = 0; i < list.length; i++){
                 dec.innerText =  `${num[i].innerText} x ${price[i].innerText}`
             }
         }
-        amount -= parseInt(price[i].innerText);
-        total[1].innerText = amount;
+        if(total[1].innerText > 0){
+            amount -= parseInt(price[i].innerText);
+            total[1].innerText = amount;
+        }
+        else{
+            total[1].innerText = '0.00';
+        }
     });   
 }
